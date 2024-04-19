@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            height: 6px;
+            width: 6px;
+            float: left;
+            border-radius: 50%;
+
+        }
+
+        .moon {
+            background-color: #eaeaea;
+            border-radius: 50%;
+            height: 60px;
+            width: 60px;
+            margin: 200px auto;
+            box-shadow: 0px 0px 4px 9px rgb(236, 234, 234);
+        }
+
+        body {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+
+</body>
+<script>
+    let div = document.createElement('div');
+    div.setAttribute('class', 'box');
+    let move = document.createElement('marquee');
+    move.setAttribute('behavior', 'alternate');
+    move.setAttribute('direction', 'up');
+    move.style.position = "fixed";
+    move.style.zIndex = "4";
+    let moon = document.createElement('div');
+    moon.setAttribute('class', 'moon')
+    move.appendChild(moon)
+    document.querySelector('body').appendChild(move.cloneNode(true));
+
+    for (let i = 0; i < 50000; i++) {
+        let clonedDiv = div.cloneNode(true)
+        document.querySelector('body').appendChild(clonedDiv);
+    }
+    let allDivs = document.querySelectorAll('.box');
+    allDivs.forEach((item) => {
+        item.addEventListener('mouseout', () => {
+            item.style.backgroundColor = 'purple';
+            setTimeout(() => {
+                item.style.backgroundColor = "darkgrey";
+                item.style.transition = "0.2s";
+            }, 2000)
+
+            setInterval(() => {
+                item.style.backgroundColor = "white";
+                item.style.transition = "0.2s";
+
+            }, 3000)
+
+            setInterval(() => {
+                item.style.backgroundColor = "grey";
+                item.style.transition = "0.2s";
+
+            }, 4000)
+            setInterval(() => {
+                item.style.backgroundColor = "darkgrey";
+                item.style.transition = "0.2s";
+
+            }, 5000)
+
+
+        })
+
+    })
+
+
+
+</script>
+
+</html>
